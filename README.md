@@ -9,28 +9,28 @@ https://github.com/oracle/docker-images/tree/main/OracleDatabase/SingleInstance
 Download installer LINUX.X64_193000_db_home.zip and put in docker-images/OracleDatabase/SingleInstance/dockerfiles/19.3.0/
 
 Build the image
-./buildContainerImage.sh -v 19.3.0 -s
+    ./buildContainerImage.sh -v 19.3.0 -s
 
 Prepare a directory for the DB datafiles
-mkdir /home/maarten/oradata
-chmod a+xrw /home/maarten/oradata
+    mkdir /home/maarten/oradata
+    chmod a+xrw /home/maarten/oradata
 
 Run the container
-docker run --name oracledb \
--p 1521:1521 -p 5500:5500 \
--e ORACLE_SID=ORCLCDB \
--e ORACLE_PDB=ORCLPDB1 \
--e ORACLE_PWD=Welcome01 \
--e ORACLE_EDITION=standard \
--e ORACLE_CHARACTERSET=AL32UTF8 \
--v /home/maarten/oradata:/opt/oracle/oradata \
-oracle/database:19.3.0-se2
+    docker run --name oracledb \
+    -p 1521:1521 -p 5500:5500 \
+    -e ORACLE_SID=ORCLCDB \
+    -e ORACLE_PDB=ORCLPDB1 \
+    -e ORACLE_PWD=Welcome01 \
+    -e ORACLE_EDITION=standard \
+    -e ORACLE_CHARACTERSET=AL32UTF8 \
+    -v /home/maarten/oradata:/opt/oracle/oradata \
+    oracle/database:19.3.0-se2
 
 ctrl-c to stop or docker stop
 docker start oracledb
 
 Access the DB using SQLPlus from within the container itself
-docker exec -ti oracledb sqlplus pdbadmin@ORCLPDB1
+    docker exec -ti oracledb sqlplus pdbadmin@ORCLPDB1
 
 ## Allow connecting
 Allow connecting to the container using 127.0.0.1/localhost by taking into account the OOB issue:
@@ -40,20 +40,20 @@ Allow connecting to the container using 127.0.0.1/localhost by taking into accou
 ## Prepare DB contents
 
 As sys
-ALTER SESSION SET CONTAINER = orclpdb1;
-create user testuser identified by "testuser" CONTAINER=CURRENT;
-grant connect, resource, dba to testuser
+    ALTER SESSION SET CONTAINER = orclpdb1;
+    create user testuser identified by "testuser" CONTAINER=CURRENT;
+    grant connect, resource, dba to testuser
 
 As testuser
-CREATE TABLE testtable (
-    id          NUMBER PRIMARY KEY,
-    ts          TIMESTAMP DEFAULT on null current_timestamp
-);
+    CREATE TABLE testtable (
+        id          NUMBER PRIMARY KEY,
+        ts          TIMESTAMP DEFAULT on null current_timestamp
+    );
 
 ## Simple Spring Boot service tests with Curl
 
 POST
-curl -d '{"id":1}' -H 'Content-Type: application/json' http://localhost:8080/entry
+    curl -d '{"id":1}' -H 'Content-Type: application/json' http://localhost:8080/entry
 
 GET
-curl localhost:8080/entry/1
+    curl localhost:8080/entry/1
