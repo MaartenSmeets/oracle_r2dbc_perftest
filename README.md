@@ -37,7 +37,7 @@ Allow connecting to the container using 127.0.0.1/localhost by taking into accou
 - for Java: https://stackoverflow.com/questions/16918024/is-there-a-solution-to-jdbc-driver-bug-in-out-of-band-breaks -> <spring-boot.run.jvmArguments>-Doracle.net.disableOob=true</spring-boot.run.jvmArguments>
 - for SQLDeveloper: https://thtechnology.com/2015/08/01/sql-developer-dropping-connections-solved/
 
-##Prepare DB contents
+## Prepare DB contents
 
 As sys
 ALTER SESSION SET CONTAINER = orclpdb1;
