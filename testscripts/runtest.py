@@ -40,14 +40,14 @@ logger.addHandler(fh)
 
 cpuset_load_list = ['3', '3,5', '3,5,7,9']
 cpuset_service_list = ['2', '2,4', '2,4,6,8']
-concurrency_conf = ['5', '100']
+concurrency_conf = ['1', '5', '100']
 
 # JAR files to test with
 jarfiles = [{'filename': '/home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc-0.0.1-SNAPSHOT-17.jar', 'description': 'sb_jdbc_17'}]
 
 #JVMs / switches to test with
-jvms = [{'cmd': '/usr/lib/jvm/jdk-17-loom/bin/java', 'description': '17', 'switchobj': [{'switch':'-Xmx2g -Xms2g -Doracle.net.disableOob=true -jar', 'mem': '2Gb'}, {'switch': '-Xmx100m -Xms100m -Doracle.net.disableOob=true -jar', 'mem': '100Mb'}]},
-        {'cmd': '/usr/lib/jvm/jdk-17/bin/java', 'description': '17-loom', 'switchobj': [{'switch':'-Xmx2g -Xms2g -Doracle.net.disableOob=true -jar', 'mem': '2Gb'}, {'switch': '-Xmx100m -Xms100m -Doracle.net.disableOob=true -jar', 'mem': '100Mb'}]}]
+jvms = [{'cmd': '/usr/lib/jvm/jdk-17-loom/bin/java', 'description': '17-loom', 'switchobj': [{'switch':'-Xmx2g -Xms2g -Doracle.net.disableOob=true -jar', 'mem': '2Gb'}, {'switch': '-Xmx100m -Xms100m -Doracle.net.disableOob=true -jar', 'mem': '100Mb'}]},
+        {'cmd': '/usr/lib/jvm/jdk-17/bin/java', 'description': '17', 'switchobj': [{'switch':'-Xmx2g -Xms2g -Doracle.net.disableOob=true -jar', 'mem': '2Gb'}, {'switch': '-Xmx100m -Xms100m -Doracle.net.disableOob=true -jar', 'mem': '100Mb'}]}]
 
 def check_prereqs():
     resval = True;
@@ -122,7 +122,7 @@ def exec_all_tests():
     # write header
     with open(resultsfile, 'a') as the_file:
         the_file.write(
-            'description,memory,cpus_load,cpus_service,concurrency,lat_avg,lat_stdev,lat_max,req_avg,req_stdev,req_max,tot_requests,tot_duration,read,err_connect,err_read,err_write,err_timeout,req_sec_tot,read_tot,user_cpu,kern_cpu,mem_kb_uss,mem_kb_pss,mem_kb_rss,duration\n')
+            'jardescription,jvmdescription,memory,cpus_load,cpus_service,concurrency,lat_avg,lat_stdev,lat_max,req_avg,req_stdev,req_max,tot_requests,tot_duration,read,err_connect,err_read,err_write,err_timeout,req_sec_tot,read_tot,user_cpu,kern_cpu,mem_kb_uss,mem_kb_pss,mem_kb_rss,duration\n')
     for jarfile in jarfiles:
         for jvm in jvms:
             for jvmswitch in jvm.get('switchobj'):
@@ -143,7 +143,7 @@ def exec_all_tests():
                         logger.info('Number of CPUs for service ' + cpunum_service)
                         # concurrency_local is a selection of all the concurrency options. concurrency has to be >= threads/cores for wrk
                         for concurrency in concurrency_local:
-                            jvm_outputline = jarfile.get('description') + ',' + jvmswitch.get('mem') + ',' + cpunum_load + ',' + cpunum_service + ',' + concurrency
+                            jvm_outputline = jarfile.get('description') + ',' + jvm.get('description') + ',' + jvmswitch.get('mem') + ',' + cpunum_load + ',' + cpunum_service + ',' + concurrency
                             logger.info('Number of concurrent requests ' + concurrency)
 
                             pid = start_java_process(jvmcmd, cpuset_service)
@@ -398,4 +398,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
