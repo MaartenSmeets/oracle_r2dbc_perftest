@@ -1,0 +1,457 @@
+2021-02-10 09:50:15,875 - run_test - INFO - Prerequisites satisfied
+2021-02-10 09:50:15,875 - run_test - INFO - Starting repeat: 1
+2021-02-10 09:50:15,875 - run_test - INFO - Estimated duration: 0.7388888888888889 hours
+2021-02-10 09:50:15,875 - run_test - INFO - Using logfile: results_20210210_095015.log
+2021-02-10 09:50:15,875 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17-loom/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar
+2021-02-10 09:50:15,875 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 09:50:15,875 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 09:50:15,875 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 09:50:25,944 - run_test - INFO - Java process PID is: 9835
+2021-02-10 09:50:25,944 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 09:50:27,978 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 09:50:27,979 - run_test - INFO - Executing test done
+2021-02-10 09:50:29,004 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 09:52:29,068 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 09:52:29,068 - run_test - INFO - Executing test done
+2021-02-10 09:52:29,071 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 09:52:29,072 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 09:52:29,072 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 09:52:29,072 - run_test - DEBUG - wrk output:     Latency     8.29ms    7.41ms 166.81ms   65.90%
+2021-02-10 09:52:29,072 - run_test - DEBUG - wrk output:     Req/Sec     3.44k   546.86     4.17k    89.98%
+2021-02-10 09:52:29,072 - run_test - DEBUG - wrk output:   1644695 requests in 2.00m, 266.94MB read
+2021-02-10 09:52:29,072 - run_test - DEBUG - wrk output: Requests/sec:  13699.73
+2021-02-10 09:52:29,072 - run_test - DEBUG - wrk output: Transfer/sec:      2.22MB
+2021-02-10 09:52:29,072 - run_test - DEBUG - wrk_output: {'lat_avg': 8.29, 'lat_stdev': 7.41, 'lat_max': 166.81, 'req_avg': 3440.0, 'req_stdev': 546.86, 'req_max': 4170.0, 'tot_requests': 1644695.0, 'tot_duration': 120000.0, 'read': 279906877.44, 'req_sec_tot': 13699.73, 'read_tot': 2327838.72, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 09:52:29,088 - run_test - INFO - CPU and memory: ,27403,11993,387340,387369,390280
+2021-02-10 09:52:29,088 - run_test - INFO - Killing process with PID: 9835
+2021-02-10 09:52:29,100 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar
+2021-02-10 09:52:29,100 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 09:52:29,100 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 09:52:29,100 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 09:52:39,139 - run_test - INFO - Java process PID is: 10271
+2021-02-10 09:52:39,140 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 09:52:41,173 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 09:52:41,174 - run_test - INFO - Executing test done
+2021-02-10 09:52:42,177 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 09:54:42,211 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 09:54:42,211 - run_test - INFO - Executing test done
+2021-02-10 09:54:42,214 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 09:54:42,214 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 09:54:42,214 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 09:54:42,214 - run_test - DEBUG - wrk output:     Latency     8.45ms    7.36ms 202.90ms   64.95%
+2021-02-10 09:54:42,214 - run_test - DEBUG - wrk output:     Req/Sec     3.36k   527.66     3.99k    90.25%
+2021-02-10 09:54:42,214 - run_test - DEBUG - wrk output:   1605579 requests in 2.00m, 260.59MB read
+2021-02-10 09:54:42,215 - run_test - DEBUG - wrk output: Requests/sec:  13376.55
+2021-02-10 09:54:42,215 - run_test - DEBUG - wrk output: Transfer/sec:      2.17MB
+2021-02-10 09:54:42,215 - run_test - DEBUG - wrk_output: {'lat_avg': 8.45, 'lat_stdev': 7.36, 'lat_max': 202.9, 'req_avg': 3360.0, 'req_stdev': 527.66, 'req_max': 3990.0, 'tot_requests': 1605579.0, 'tot_duration': 120000.0, 'read': 273248419.84, 'req_sec_tot': 13376.55, 'read_tot': 2275409.92, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 09:54:42,230 - run_test - INFO - CPU and memory: ,27699,11764,389652,389682,392668
+2021-02-10 09:54:42,230 - run_test - INFO - Killing process with PID: 10271
+2021-02-10 09:54:42,242 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17-loom/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar
+2021-02-10 09:54:42,242 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 09:54:42,242 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 09:54:42,242 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 09:54:52,280 - run_test - INFO - Java process PID is: 10588
+2021-02-10 09:54:52,280 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 09:54:54,322 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 09:54:54,322 - run_test - INFO - Executing test done
+2021-02-10 09:54:55,334 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 09:56:55,378 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 09:56:55,378 - run_test - INFO - Executing test done
+2021-02-10 09:56:55,381 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 09:56:55,381 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 09:56:55,381 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 09:56:55,381 - run_test - DEBUG - wrk output:     Latency     7.95ms    3.61ms 161.98ms   90.16%
+2021-02-10 09:56:55,381 - run_test - DEBUG - wrk output:     Req/Sec     3.25k   566.52     4.31k    91.40%
+2021-02-10 09:56:55,381 - run_test - DEBUG - wrk output:   1552322 requests in 2.00m, 251.95MB read
+2021-02-10 09:56:55,382 - run_test - DEBUG - wrk output: Requests/sec:  12932.32
+2021-02-10 09:56:55,382 - run_test - DEBUG - wrk output: Transfer/sec:      2.10MB
+2021-02-10 09:56:55,382 - run_test - DEBUG - wrk_output: {'lat_avg': 7.95, 'lat_stdev': 3.61, 'lat_max': 161.98, 'req_avg': 3250.0, 'req_stdev': 566.52, 'req_max': 4310.0, 'tot_requests': 1552322.0, 'tot_duration': 120000.0, 'read': 264188723.2, 'req_sec_tot': 12932.32, 'read_tot': 2202009.6, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 09:56:55,399 - run_test - INFO - CPU and memory: ,27008,12366,402208,403489,406780
+2021-02-10 09:56:55,400 - run_test - INFO - Killing process with PID: 10588
+2021-02-10 09:56:55,415 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar
+2021-02-10 09:56:55,415 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 09:56:55,415 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 09:56:55,415 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 09:57:05,451 - run_test - INFO - Java process PID is: 10906
+2021-02-10 09:57:05,451 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 09:57:07,474 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 09:57:07,474 - run_test - INFO - Executing test done
+2021-02-10 09:57:08,486 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 09:59:08,544 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 09:59:08,544 - run_test - INFO - Executing test done
+2021-02-10 09:59:08,547 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 09:59:08,547 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 09:59:08,547 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 09:59:08,547 - run_test - DEBUG - wrk output:     Latency     7.77ms    2.59ms  86.68ms   90.80%
+2021-02-10 09:59:08,547 - run_test - DEBUG - wrk output:     Req/Sec     3.27k   480.39     3.82k    92.08%
+2021-02-10 09:59:08,547 - run_test - DEBUG - wrk output:   1564277 requests in 2.00m, 253.89MB read
+2021-02-10 09:59:08,547 - run_test - DEBUG - wrk output: Requests/sec:  13030.38
+2021-02-10 09:59:08,547 - run_test - DEBUG - wrk output: Transfer/sec:      2.11MB
+2021-02-10 09:59:08,547 - run_test - DEBUG - wrk_output: {'lat_avg': 7.77, 'lat_stdev': 2.59, 'lat_max': 86.68, 'req_avg': 3270.0, 'req_stdev': 480.39, 'req_max': 3820.0, 'tot_requests': 1564277.0, 'tot_duration': 120000.0, 'read': 266222960.64, 'req_sec_tot': 13030.38, 'read_tot': 2212495.36, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 09:59:08,565 - run_test - INFO - CPU and memory: ,27311,12120,369992,370333,373452
+2021-02-10 09:59:08,565 - run_test - INFO - Killing process with PID: 10906
+2021-02-10 09:59:08,579 - run_test - INFO - Starting repeat: 2
+2021-02-10 09:59:08,579 - run_test - INFO - Estimated duration: 0.7388888888888889 hours
+2021-02-10 09:59:08,579 - run_test - INFO - Using logfile: results_20210210_095015.log
+2021-02-10 09:59:08,579 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17-loom/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar
+2021-02-10 09:59:08,579 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 09:59:08,579 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 09:59:08,579 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 09:59:18,619 - run_test - INFO - Java process PID is: 11223
+2021-02-10 09:59:18,619 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 09:59:20,662 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 09:59:20,662 - run_test - INFO - Executing test done
+2021-02-10 09:59:21,674 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:01:21,768 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:01:21,768 - run_test - INFO - Executing test done
+2021-02-10 10:01:21,770 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:01:21,770 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:01:21,771 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:01:21,771 - run_test - DEBUG - wrk output:     Latency     8.91ms    8.42ms 243.88ms   75.67%
+2021-02-10 10:01:21,771 - run_test - DEBUG - wrk output:     Req/Sec     3.25k   557.85     3.92k    90.48%
+2021-02-10 10:01:21,771 - run_test - DEBUG - wrk output:   1554478 requests in 2.00m, 252.30MB read
+2021-02-10 10:01:21,771 - run_test - DEBUG - wrk output: Requests/sec:  12945.00
+2021-02-10 10:01:21,771 - run_test - DEBUG - wrk output: Transfer/sec:      2.10MB
+2021-02-10 10:01:21,771 - run_test - DEBUG - wrk_output: {'lat_avg': 8.91, 'lat_stdev': 8.42, 'lat_max': 243.88, 'req_avg': 3250.0, 'req_stdev': 557.85, 'req_max': 3920.0, 'tot_requests': 1554478.0, 'tot_duration': 120000.0, 'read': 264555724.8, 'req_sec_tot': 12945.0, 'read_tot': 2202009.6, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:01:21,787 - run_test - INFO - CPU and memory: ,28267,11570,395164,395198,398292
+2021-02-10 10:01:21,787 - run_test - INFO - Killing process with PID: 11223
+2021-02-10 10:01:21,800 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:01:21,800 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:01:21,800 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:01:21,800 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:01:31,839 - run_test - INFO - Java process PID is: 11543
+2021-02-10 10:01:31,839 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:01:33,862 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:01:33,863 - run_test - INFO - Executing test done
+2021-02-10 10:01:34,875 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:03:34,917 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:03:34,917 - run_test - INFO - Executing test done
+2021-02-10 10:03:34,920 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:03:34,921 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:03:34,921 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:03:34,921 - run_test - DEBUG - wrk output:     Latency     8.41ms    7.30ms 183.28ms   65.04%
+2021-02-10 10:03:34,921 - run_test - DEBUG - wrk output:     Req/Sec     3.38k   521.64     4.07k    90.98%
+2021-02-10 10:03:34,921 - run_test - DEBUG - wrk output:   1614067 requests in 2.00m, 261.97MB read
+2021-02-10 10:03:34,921 - run_test - DEBUG - wrk output: Requests/sec:  13446.80
+2021-02-10 10:03:34,921 - run_test - DEBUG - wrk output: Transfer/sec:      2.18MB
+2021-02-10 10:03:34,921 - run_test - DEBUG - wrk_output: {'lat_avg': 8.41, 'lat_stdev': 7.3, 'lat_max': 183.28, 'req_avg': 3380.0, 'req_stdev': 521.64, 'req_max': 4070.0000000000005, 'tot_requests': 1614067.0, 'tot_duration': 120000.0, 'read': 274695454.72, 'req_sec_tot': 13446.8, 'read_tot': 2285895.68, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:03:34,936 - run_test - INFO - CPU and memory: ,27586,11885,374592,374646,377756
+2021-02-10 10:03:34,937 - run_test - INFO - Killing process with PID: 11543
+2021-02-10 10:03:34,948 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17-loom/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:03:34,948 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:03:34,948 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:03:34,948 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:03:44,988 - run_test - INFO - Java process PID is: 11851
+2021-02-10 10:03:44,988 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:03:47,017 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:03:47,017 - run_test - INFO - Executing test done
+2021-02-10 10:03:48,029 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:05:48,097 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:05:48,097 - run_test - INFO - Executing test done
+2021-02-10 10:05:48,100 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:05:48,100 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:05:48,101 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:05:48,101 - run_test - DEBUG - wrk output:     Latency     8.03ms    3.81ms 148.37ms   91.76%
+2021-02-10 10:05:48,101 - run_test - DEBUG - wrk output:     Req/Sec     3.23k   567.34     3.57k    91.50%
+2021-02-10 10:05:48,101 - run_test - DEBUG - wrk output:   1542397 requests in 2.00m, 250.34MB read
+2021-02-10 10:05:48,101 - run_test - DEBUG - wrk output: Requests/sec:  12847.05
+2021-02-10 10:05:48,101 - run_test - DEBUG - wrk output: Transfer/sec:      2.09MB
+2021-02-10 10:05:48,101 - run_test - DEBUG - wrk_output: {'lat_avg': 8.03, 'lat_stdev': 3.81, 'lat_max': 148.37, 'req_avg': 3230.0, 'req_stdev': 567.34, 'req_max': 3570.0, 'tot_requests': 1542397.0, 'tot_duration': 120000.0, 'read': 262500515.84, 'req_sec_tot': 12847.05, 'read_tot': 2191523.84, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:05:48,117 - run_test - INFO - CPU and memory: ,27532,11993,426024,426056,429052
+2021-02-10 10:05:48,118 - run_test - INFO - Killing process with PID: 11851
+2021-02-10 10:05:48,131 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:05:48,131 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:05:48,131 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:05:48,131 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:05:58,169 - run_test - INFO - Java process PID is: 12206
+2021-02-10 10:05:58,169 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:06:00,210 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:06:00,211 - run_test - INFO - Executing test done
+2021-02-10 10:06:01,223 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:08:01,267 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:08:01,267 - run_test - INFO - Executing test done
+2021-02-10 10:08:01,270 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:08:01,270 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:08:01,270 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:08:01,270 - run_test - DEBUG - wrk output:     Latency     7.73ms    2.98ms 144.04ms   88.72%
+2021-02-10 10:08:01,270 - run_test - DEBUG - wrk output:     Req/Sec     3.31k   502.53     3.72k    92.21%
+2021-02-10 10:08:01,270 - run_test - DEBUG - wrk output:   1581406 requests in 2.00m, 256.67MB read
+2021-02-10 10:08:01,270 - run_test - DEBUG - wrk output: Requests/sec:  13174.65
+2021-02-10 10:08:01,270 - run_test - DEBUG - wrk output: Transfer/sec:      2.14MB
+2021-02-10 10:08:01,270 - run_test - DEBUG - wrk_output: {'lat_avg': 7.73, 'lat_stdev': 2.98, 'lat_max': 144.04, 'req_avg': 3310.0, 'req_stdev': 502.53, 'req_max': 3720.0, 'tot_requests': 1581406.0, 'tot_duration': 120000.0, 'read': 269138001.92, 'req_sec_tot': 13174.65, 'read_tot': 2243952.64, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:08:01,288 - run_test - INFO - CPU and memory: ,26961,12244,371776,372221,375240
+2021-02-10 10:08:01,288 - run_test - INFO - Killing process with PID: 12206
+2021-02-10 10:08:01,301 - run_test - INFO - Starting repeat: 3
+2021-02-10 10:08:01,301 - run_test - INFO - Estimated duration: 0.7388888888888889 hours
+2021-02-10 10:08:01,301 - run_test - INFO - Using logfile: results_20210210_095015.log
+2021-02-10 10:08:01,301 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17-loom/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:08:01,301 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:08:01,301 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:08:01,301 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:08:11,366 - run_test - INFO - Java process PID is: 12654
+2021-02-10 10:08:11,366 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:08:13,410 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:08:13,410 - run_test - INFO - Executing test done
+2021-02-10 10:08:14,434 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:10:14,520 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:10:14,520 - run_test - INFO - Executing test done
+2021-02-10 10:10:14,523 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:10:14,523 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:10:14,523 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:10:14,523 - run_test - DEBUG - wrk output:     Latency     8.50ms    7.87ms 194.90ms   67.97%
+2021-02-10 10:10:14,523 - run_test - DEBUG - wrk output:     Req/Sec     3.38k   541.08     4.76k    89.98%
+2021-02-10 10:10:14,523 - run_test - DEBUG - wrk output:   1615513 requests in 2.00m, 262.21MB read
+2021-02-10 10:10:14,523 - run_test - DEBUG - wrk output: Requests/sec:  13454.13
+2021-02-10 10:10:14,523 - run_test - DEBUG - wrk output: Transfer/sec:      2.18MB
+2021-02-10 10:10:14,523 - run_test - DEBUG - wrk_output: {'lat_avg': 8.5, 'lat_stdev': 7.87, 'lat_max': 194.9, 'req_avg': 3380.0, 'req_stdev': 541.08, 'req_max': 4760.0, 'tot_requests': 1615513.0, 'tot_duration': 120000.0, 'read': 274947112.96, 'req_sec_tot': 13454.13, 'read_tot': 2285895.68, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:10:14,540 - run_test - INFO - CPU and memory: ,27368,12014,397244,397283,400372
+2021-02-10 10:10:14,541 - run_test - INFO - Killing process with PID: 12654
+2021-02-10 10:10:14,553 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:10:14,553 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:10:14,553 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:10:14,553 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:10:24,592 - run_test - INFO - Java process PID is: 12999
+2021-02-10 10:10:24,592 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:10:26,627 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:10:26,627 - run_test - INFO - Executing test done
+2021-02-10 10:10:27,640 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:12:27,727 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:12:27,727 - run_test - INFO - Executing test done
+2021-02-10 10:12:27,730 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:12:27,730 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:12:27,730 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:12:27,730 - run_test - DEBUG - wrk output:     Latency     8.17ms    7.13ms 213.38ms   66.01%
+2021-02-10 10:12:27,730 - run_test - DEBUG - wrk output:     Req/Sec     3.44k   484.25     6.06k    90.67%
+2021-02-10 10:12:27,730 - run_test - DEBUG - wrk output:   1643626 requests in 2.00m, 266.77MB read
+2021-02-10 10:12:27,730 - run_test - DEBUG - wrk output: Requests/sec:  13688.26
+2021-02-10 10:12:27,730 - run_test - DEBUG - wrk output: Transfer/sec:      2.22MB
+2021-02-10 10:12:27,730 - run_test - DEBUG - wrk_output: {'lat_avg': 8.17, 'lat_stdev': 7.13, 'lat_max': 213.38, 'req_avg': 3440.0, 'req_stdev': 484.25, 'req_max': 6060.0, 'tot_requests': 1643626.0, 'tot_duration': 120000.0, 'read': 279728619.52, 'req_sec_tot': 13688.26, 'read_tot': 2327838.72, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:12:27,745 - run_test - INFO - CPU and memory: ,27131,12107,363788,363820,366940
+2021-02-10 10:12:27,745 - run_test - INFO - Killing process with PID: 12999
+2021-02-10 10:12:27,757 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17-loom/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:12:27,757 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:12:27,757 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:12:27,757 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:12:37,795 - run_test - INFO - Java process PID is: 13349
+2021-02-10 10:12:37,795 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:12:39,836 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:12:39,836 - run_test - INFO - Executing test done
+2021-02-10 10:12:40,848 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:14:40,913 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:14:40,913 - run_test - INFO - Executing test done
+2021-02-10 10:14:40,917 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:14:40,917 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:14:40,917 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:14:40,917 - run_test - DEBUG - wrk output:     Latency     7.74ms    3.03ms 113.67ms   92.57%
+2021-02-10 10:14:40,917 - run_test - DEBUG - wrk output:     Req/Sec     3.31k   515.75     3.77k    92.00%
+2021-02-10 10:14:40,917 - run_test - DEBUG - wrk output:   1583279 requests in 2.00m, 256.98MB read
+2021-02-10 10:14:40,917 - run_test - DEBUG - wrk output: Requests/sec:  13187.94
+2021-02-10 10:14:40,917 - run_test - DEBUG - wrk output: Transfer/sec:      2.14MB
+2021-02-10 10:14:40,917 - run_test - DEBUG - wrk_output: {'lat_avg': 7.74, 'lat_stdev': 3.03, 'lat_max': 113.67, 'req_avg': 3310.0, 'req_stdev': 515.75, 'req_max': 3770.0, 'tot_requests': 1583279.0, 'tot_duration': 120000.0, 'read': 269463060.48, 'req_sec_tot': 13187.94, 'read_tot': 2243952.64, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:14:40,935 - run_test - INFO - CPU and memory: ,26515,12472,423284,423317,426400
+2021-02-10 10:14:40,936 - run_test - INFO - Killing process with PID: 13349
+2021-02-10 10:14:40,949 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:14:40,949 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:14:40,949 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:14:40,949 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:14:50,989 - run_test - INFO - Java process PID is: 13667
+2021-02-10 10:14:50,989 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:14:53,039 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:14:53,039 - run_test - INFO - Executing test done
+2021-02-10 10:14:54,051 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:16:54,123 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:16:54,123 - run_test - INFO - Executing test done
+2021-02-10 10:16:54,126 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:16:54,126 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:16:54,126 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:16:54,127 - run_test - DEBUG - wrk output:     Latency     7.77ms    2.76ms 103.07ms   89.56%
+2021-02-10 10:16:54,127 - run_test - DEBUG - wrk output:     Req/Sec     3.28k   481.32     4.03k    91.96%
+2021-02-10 10:16:54,127 - run_test - DEBUG - wrk output:   1566850 requests in 2.00m, 254.31MB read
+2021-02-10 10:16:54,127 - run_test - DEBUG - wrk output: Requests/sec:  13050.31
+2021-02-10 10:16:54,127 - run_test - DEBUG - wrk output: Transfer/sec:      2.12MB
+2021-02-10 10:16:54,127 - run_test - DEBUG - wrk_output: {'lat_avg': 7.77, 'lat_stdev': 2.76, 'lat_max': 103.07, 'req_avg': 3280.0, 'req_stdev': 481.32, 'req_max': 4030.0000000000005, 'tot_requests': 1566850.0, 'tot_duration': 120000.0, 'read': 266663362.56, 'req_sec_tot': 13050.31, 'read_tot': 2222981.12, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:16:54,142 - run_test - INFO - CPU and memory: ,27245,12036,353572,353601,356568
+2021-02-10 10:16:54,142 - run_test - INFO - Killing process with PID: 13667
+2021-02-10 10:16:54,154 - run_test - INFO - Starting repeat: 4
+2021-02-10 10:16:54,154 - run_test - INFO - Estimated duration: 0.7388888888888889 hours
+2021-02-10 10:16:54,154 - run_test - INFO - Using logfile: results_20210210_095015.log
+2021-02-10 10:16:54,154 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17-loom/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:16:54,154 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:16:54,154 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:16:54,154 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:17:04,194 - run_test - INFO - Java process PID is: 14037
+2021-02-10 10:17:04,194 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:17:06,237 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:17:06,237 - run_test - INFO - Executing test done
+2021-02-10 10:17:07,248 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:19:07,308 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:19:07,308 - run_test - INFO - Executing test done
+2021-02-10 10:19:07,311 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:19:07,311 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:19:07,311 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:19:07,311 - run_test - DEBUG - wrk output:     Latency     8.68ms    8.81ms 242.33ms   91.90%
+2021-02-10 10:19:07,311 - run_test - DEBUG - wrk output:     Req/Sec     3.37k   554.96     4.11k    91.58%
+2021-02-10 10:19:07,312 - run_test - DEBUG - wrk output:   1611349 requests in 2.00m, 261.53MB read
+2021-02-10 10:19:07,312 - run_test - DEBUG - wrk output: Requests/sec:  13422.42
+2021-02-10 10:19:07,312 - run_test - DEBUG - wrk output: Transfer/sec:      2.18MB
+2021-02-10 10:19:07,312 - run_test - DEBUG - wrk_output: {'lat_avg': 8.68, 'lat_stdev': 8.81, 'lat_max': 242.33, 'req_avg': 3370.0, 'req_stdev': 554.96, 'req_max': 4110.0, 'tot_requests': 1611349.0, 'tot_duration': 120000.0, 'read': 274234081.28, 'req_sec_tot': 13422.42, 'read_tot': 2285895.68, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:19:07,329 - run_test - INFO - CPU and memory: ,27436,11995,411496,411527,414616
+2021-02-10 10:19:07,329 - run_test - INFO - Killing process with PID: 14037
+2021-02-10 10:19:07,342 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:19:07,342 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:19:07,342 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:19:07,342 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:19:17,405 - run_test - INFO - Java process PID is: 14353
+2021-02-10 10:19:17,405 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:19:19,433 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:19:19,433 - run_test - INFO - Executing test done
+2021-02-10 10:19:20,444 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:21:20,502 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:21:20,502 - run_test - INFO - Executing test done
+2021-02-10 10:21:20,505 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:21:20,505 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:21:20,506 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:21:20,506 - run_test - DEBUG - wrk output:     Latency     8.50ms    7.49ms 195.24ms   65.44%
+2021-02-10 10:21:20,506 - run_test - DEBUG - wrk output:     Req/Sec     3.34k   521.99     4.17k    89.94%
+2021-02-10 10:21:20,506 - run_test - DEBUG - wrk output:   1595272 requests in 2.00m, 258.92MB read
+2021-02-10 10:21:20,506 - run_test - DEBUG - wrk output: Requests/sec:  13288.74
+2021-02-10 10:21:20,506 - run_test - DEBUG - wrk output: Transfer/sec:      2.16MB
+2021-02-10 10:21:20,506 - run_test - DEBUG - wrk_output: {'lat_avg': 8.5, 'lat_stdev': 7.49, 'lat_max': 195.24, 'req_avg': 3340.0, 'req_stdev': 521.99, 'req_max': 4170.0, 'tot_requests': 1595272.0, 'tot_duration': 120000.0, 'read': 271497297.92, 'req_sec_tot': 13288.74, 'read_tot': 2264924.16, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:21:20,523 - run_test - INFO - CPU and memory: ,27635,11909,369012,369093,372116
+2021-02-10 10:21:20,523 - run_test - INFO - Killing process with PID: 14353
+2021-02-10 10:21:20,536 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17-loom/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:21:20,536 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:21:20,536 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:21:20,536 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:21:30,602 - run_test - INFO - Java process PID is: 14658
+2021-02-10 10:21:30,602 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:21:32,651 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:21:32,651 - run_test - INFO - Executing test done
+2021-02-10 10:21:33,663 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:23:33,706 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:23:33,706 - run_test - INFO - Executing test done
+2021-02-10 10:23:33,709 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:23:33,709 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:23:33,709 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:23:33,709 - run_test - DEBUG - wrk output:     Latency     7.79ms    3.33ms 104.95ms   92.83%
+2021-02-10 10:23:33,709 - run_test - DEBUG - wrk output:     Req/Sec     3.32k   572.61     3.74k    91.56%
+2021-02-10 10:23:33,709 - run_test - DEBUG - wrk output:   1583951 requests in 2.00m, 257.08MB read
+2021-02-10 10:23:33,709 - run_test - DEBUG - wrk output: Requests/sec:  13195.97
+2021-02-10 10:23:33,710 - run_test - DEBUG - wrk output: Transfer/sec:      2.14MB
+2021-02-10 10:23:33,710 - run_test - DEBUG - wrk_output: {'lat_avg': 7.79, 'lat_stdev': 3.33, 'lat_max': 104.95, 'req_avg': 3320.0, 'req_stdev': 572.61, 'req_max': 3740.0, 'tot_requests': 1583951.0, 'tot_duration': 120000.0, 'read': 269567918.08, 'req_sec_tot': 13195.97, 'read_tot': 2243952.64, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:23:33,726 - run_test - INFO - CPU and memory: ,26755,12355,373424,373457,376552
+2021-02-10 10:23:33,727 - run_test - INFO - Killing process with PID: 14658
+2021-02-10 10:23:33,740 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:23:33,740 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:23:33,740 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:23:33,740 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:23:43,805 - run_test - INFO - Java process PID is: 14987
+2021-02-10 10:23:43,805 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:23:45,871 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:23:45,871 - run_test - INFO - Executing test done
+2021-02-10 10:23:46,884 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:25:46,932 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:25:46,932 - run_test - INFO - Executing test done
+2021-02-10 10:25:46,935 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:25:46,935 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:25:46,936 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:25:46,936 - run_test - DEBUG - wrk output:     Latency     7.72ms    2.77ms 119.51ms   89.82%
+2021-02-10 10:25:46,936 - run_test - DEBUG - wrk output:     Req/Sec     3.30k   493.50     3.81k    92.19%
+2021-02-10 10:25:46,936 - run_test - DEBUG - wrk output:   1578237 requests in 2.00m, 256.16MB read
+2021-02-10 10:25:46,936 - run_test - DEBUG - wrk output: Requests/sec:  13147.71
+2021-02-10 10:25:46,936 - run_test - DEBUG - wrk output: Transfer/sec:      2.13MB
+2021-02-10 10:25:46,936 - run_test - DEBUG - wrk_output: {'lat_avg': 7.72, 'lat_stdev': 2.77, 'lat_max': 119.51, 'req_avg': 3300.0, 'req_stdev': 493.5, 'req_max': 3810.0, 'tot_requests': 1578237.0, 'tot_duration': 120000.0, 'read': 268603228.16, 'req_sec_tot': 13147.71, 'read_tot': 2233466.88, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:25:46,951 - run_test - INFO - CPU and memory: ,27074,12122,339464,339497,342616
+2021-02-10 10:25:46,951 - run_test - INFO - Killing process with PID: 14987
+2021-02-10 10:25:46,962 - run_test - INFO - Starting repeat: 5
+2021-02-10 10:25:46,962 - run_test - INFO - Estimated duration: 0.7388888888888889 hours
+2021-02-10 10:25:46,962 - run_test - INFO - Using logfile: results_20210210_095015.log
+2021-02-10 10:25:46,962 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17-loom/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:25:46,962 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:25:46,962 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:25:46,962 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:25:56,999 - run_test - INFO - Java process PID is: 15312
+2021-02-10 10:25:56,999 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:25:59,054 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:25:59,054 - run_test - INFO - Executing test done
+2021-02-10 10:26:00,066 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:28:00,114 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:28:00,115 - run_test - INFO - Executing test done
+2021-02-10 10:28:00,117 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:28:00,118 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:28:00,118 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:28:00,118 - run_test - DEBUG - wrk output:     Latency     8.68ms    7.96ms 191.38ms   66.24%
+2021-02-10 10:28:00,118 - run_test - DEBUG - wrk output:     Req/Sec     3.32k   567.96     3.96k    89.67%
+2021-02-10 10:28:00,118 - run_test - DEBUG - wrk output:   1584589 requests in 2.00m, 257.19MB read
+2021-02-10 10:28:00,118 - run_test - DEBUG - wrk output: Requests/sec:  13200.71
+2021-02-10 10:28:00,118 - run_test - DEBUG - wrk output: Transfer/sec:      2.14MB
+2021-02-10 10:28:00,118 - run_test - DEBUG - wrk_output: {'lat_avg': 8.68, 'lat_stdev': 7.96, 'lat_max': 191.38, 'req_avg': 3320.0, 'req_stdev': 567.96, 'req_max': 3960.0, 'tot_requests': 1584589.0, 'tot_duration': 120000.0, 'read': 269683261.44, 'req_sec_tot': 13200.71, 'read_tot': 2243952.64, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:28:00,137 - run_test - INFO - CPU and memory: ,27458,12005,369416,369448,372492
+2021-02-10 10:28:00,137 - run_test - INFO - Killing process with PID: 15312
+2021-02-10 10:28:00,149 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:28:00,149 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:28:00,149 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:28:00,149 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:28:10,212 - run_test - INFO - Java process PID is: 15719
+2021-02-10 10:28:10,212 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:28:12,251 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:28:12,251 - run_test - INFO - Executing test done
+2021-02-10 10:28:13,263 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:30:13,315 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:30:13,315 - run_test - INFO - Executing test done
+2021-02-10 10:30:13,318 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:30:13,318 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:30:13,318 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:30:13,318 - run_test - DEBUG - wrk output:     Latency     8.62ms    7.80ms 209.26ms   65.85%
+2021-02-10 10:30:13,318 - run_test - DEBUG - wrk output:     Req/Sec     3.32k   533.80     3.99k    89.58%
+2021-02-10 10:30:13,318 - run_test - DEBUG - wrk output:   1585258 requests in 2.00m, 257.30MB read
+2021-02-10 10:30:13,318 - run_test - DEBUG - wrk output: Requests/sec:  13205.80
+2021-02-10 10:30:13,318 - run_test - DEBUG - wrk output: Transfer/sec:      2.14MB
+2021-02-10 10:30:13,318 - run_test - DEBUG - wrk_output: {'lat_avg': 8.62, 'lat_stdev': 7.8, 'lat_max': 209.26, 'req_avg': 3320.0, 'req_stdev': 533.8, 'req_max': 3990.0, 'tot_requests': 1585258.0, 'tot_duration': 120000.0, 'read': 269798604.8, 'req_sec_tot': 13205.8, 'read_tot': 2243952.64, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:30:13,335 - run_test - INFO - CPU and memory: ,27628,11778,366792,366831,369936
+2021-02-10 10:30:13,335 - run_test - INFO - Killing process with PID: 15719
+2021-02-10 10:30:13,348 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17-loom/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:30:13,348 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:30:13,348 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:30:13,348 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:30:23,410 - run_test - INFO - Java process PID is: 16076
+2021-02-10 10:30:23,411 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:30:25,442 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:30:25,442 - run_test - INFO - Executing test done
+2021-02-10 10:30:26,455 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:32:26,519 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:32:26,519 - run_test - INFO - Executing test done
+2021-02-10 10:32:26,536 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:32:26,536 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:32:26,536 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:32:26,536 - run_test - DEBUG - wrk output:     Latency     7.66ms    2.83ms 122.91ms   93.08%
+2021-02-10 10:32:26,536 - run_test - DEBUG - wrk output:     Req/Sec     3.34k   522.58     4.06k    92.19%
+2021-02-10 10:32:26,536 - run_test - DEBUG - wrk output:   1596001 requests in 2.00m, 259.04MB read
+2021-02-10 10:32:26,536 - run_test - DEBUG - wrk output: Requests/sec:  13294.10
+2021-02-10 10:32:26,536 - run_test - DEBUG - wrk output: Transfer/sec:      2.16MB
+2021-02-10 10:32:26,536 - run_test - DEBUG - wrk_output: {'lat_avg': 7.66, 'lat_stdev': 2.83, 'lat_max': 122.91, 'req_avg': 3340.0, 'req_stdev': 522.58, 'req_max': 4059.9999999999995, 'tot_requests': 1596001.0, 'tot_duration': 120000.0, 'read': 271623127.04, 'req_sec_tot': 13294.1, 'read_tot': 2264924.16, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:32:26,553 - run_test - INFO - CPU and memory: ,26423,12453,380748,380779,383844
+2021-02-10 10:32:26,553 - run_test - INFO - Killing process with PID: 16076
+2021-02-10 10:32:26,566 - run_test - INFO - Processing command: /usr/lib/jvm/jdk-17/bin/java -Xmx100m -Xms100m -Doracle.net.disableOob=true -jar /home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar
+2021-02-10 10:32:26,566 - run_test - INFO - Number of CPUs for load generation 4
+2021-02-10 10:32:26,566 - run_test - INFO - Number of CPUs for service 4
+2021-02-10 10:32:26,566 - run_test - INFO - Number of concurrent requests 100
+2021-02-10 10:32:36,629 - run_test - INFO - Java process PID is: 16402
+2021-02-10 10:32:36,630 - run_test - INFO - Executing test with concurrency: 100 and duration 2 and threads 4
+2021-02-10 10:32:38,666 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d2s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:32:38,666 - run_test - INFO - Executing test done
+2021-02-10 10:32:39,692 - run_test - INFO - Executing test with concurrency: 100 and duration 120 and threads 4
+2021-02-10 10:34:39,799 - run_test - DEBUG - Executing test command taskset -c 3,5,7,9 /home/maarten/wrk/wrk --timeout 20s -d120s -c100 -t4 http://localhost:8080/entry/1
+2021-02-10 10:34:39,800 - run_test - INFO - Executing test done
+2021-02-10 10:34:39,802 - run_test - DEBUG - wrk output: Running 2m test @ http://localhost:8080/entry/1
+2021-02-10 10:34:39,802 - run_test - DEBUG - wrk output:   4 threads and 100 connections
+2021-02-10 10:34:39,802 - run_test - DEBUG - wrk output:   Thread Stats   Avg      Stdev     Max   +/- Stdev
+2021-02-10 10:34:39,802 - run_test - DEBUG - wrk output:     Latency    10.53ms    7.96ms 124.42ms   90.61%
+2021-02-10 10:34:39,802 - run_test - DEBUG - wrk output:     Req/Sec     2.69k     0.94k    7.98k    80.40%
+2021-02-10 10:34:39,802 - run_test - DEBUG - wrk output:   1284022 requests in 2.00m, 208.40MB read
+2021-02-10 10:34:39,803 - run_test - DEBUG - wrk output: Requests/sec:  10691.51
+2021-02-10 10:34:39,803 - run_test - DEBUG - wrk output: Transfer/sec:      1.74MB
+2021-02-10 10:34:39,803 - run_test - DEBUG - wrk_output: {'lat_avg': 10.53, 'lat_stdev': 7.96, 'lat_max': 124.42, 'req_avg': 2690.0, 'req_stdev': 940.0, 'req_max': 7980.0, 'tot_requests': 1284022.0, 'tot_duration': 120000.0, 'read': 218523238.4, 'req_sec_tot': 10691.51, 'read_tot': 1824522.24, 'err_connect': 0, 'err_read': 0, 'err_write': 0, 'err_timeout': 0}
+2021-02-10 10:34:39,817 - run_test - INFO - CPU and memory: ,24229,10516,343340,343373,346376
+2021-02-10 10:34:39,818 - run_test - INFO - Killing process with PID: 16402
+2021-02-10 10:34:39,829 - run_test - INFO - Test execution finished
