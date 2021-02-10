@@ -7,7 +7,8 @@ import subprocess
 import time
 from datetime import datetime
 
-test_duration = 60
+repeats = [1, 2, 3, 4, 5]
+test_duration = 120
 primer_duration = 2
 wait_after_primer = 1
 wait_to_start = 10
@@ -38,16 +39,17 @@ fh.setFormatter(formatter)
 logger.addHandler(ch)
 logger.addHandler(fh)
 
-cpuset_load_list = ['3', '3,5', '3,5,7,9']
-cpuset_service_list = ['2', '2,4', '2,4,6,8']
-concurrency_conf = ['1', '5', '100']
+cpuset_load_list = ['3,5,7,9']
+cpuset_service_list = ['2,4,6,8']
+concurrency_conf = ['100']
 
 # JAR files to test with
-jarfiles = [{'filename': '/home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc-0.0.1-SNAPSHOT-17.jar', 'description': 'sb_jdbc_17'}]
+jarfiles = [{'filename': '/home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar', 'description': 'sb_jdbc_211'},
+            {'filename': '/home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar', 'description': 'sb_jdbc_197'}]
 
 #JVMs / switches to test with
-jvms = [{'cmd': '/usr/lib/jvm/jdk-17-loom/bin/java', 'description': '17-loom', 'switchobj': [{'switch':'-Xmx2g -Xms2g -Doracle.net.disableOob=true -jar', 'mem': '2Gb'}, {'switch': '-Xmx100m -Xms100m -Doracle.net.disableOob=true -jar', 'mem': '100Mb'}]},
-        {'cmd': '/usr/lib/jvm/jdk-17/bin/java', 'description': '17', 'switchobj': [{'switch':'-Xmx2g -Xms2g -Doracle.net.disableOob=true -jar', 'mem': '2Gb'}, {'switch': '-Xmx100m -Xms100m -Doracle.net.disableOob=true -jar', 'mem': '100Mb'}]}]
+jvms = [{'cmd': '/usr/lib/jvm/jdk-17-loom/bin/java', 'description': '17-loom', 'switchobj': [{'switch': '-Xmx100m -Xms100m -Doracle.net.disableOob=true -jar', 'mem': '100Mb'}]},
+        {'cmd': '/usr/lib/jvm/jdk-17/bin/java', 'description': '17', 'switchobj': [{'switch': '-Xmx100m -Xms100m -Doracle.net.disableOob=true -jar', 'mem': '100Mb'}]}]
 
 def check_prereqs():
     resval = True;
@@ -102,13 +104,14 @@ def get_mem_kb_uss(pid):
 # Estimate test duration
 def estimate_duration():
     total = 0
-    for jarfile in jarfiles:
-        for jvm in jvms:
-            for jvmswitch in jvm.get('switchobj'):
-                for cpuset1 in cpuset_load_list:
-                    for cpuset2 in cpuset_service_list:
-                        for concurrency in concurrency_conf:
-                            total = total + test_duration + primer_duration + wait_after_primer + wait_to_start
+    for repeat in repeats:
+        for jarfile in jarfiles:
+            for jvm in jvms:
+                for jvmswitch in jvm.get('switchobj'):
+                    for cpuset1 in cpuset_load_list:
+                        for cpuset2 in cpuset_service_list:
+                            for concurrency in concurrency_conf:
+                                total = total + test_duration + primer_duration + wait_after_primer + wait_to_start
     return total / 60 / 60
 
 # counts from a comma separated list the number of cpus
@@ -116,13 +119,16 @@ def get_cpu_num(cpuset):
     return len(cpuset.split(','))
 
 
-def exec_all_tests():
-    logger.info('Estimated duration: ' + str(estimate_duration()) + ' hours')
-    logger.info('Using logfile: ' + resultsfile)
+def write_header():
     # write header
     with open(resultsfile, 'a') as the_file:
         the_file.write(
             'jardescription,jvmdescription,memory,cpus_load,cpus_service,concurrency,lat_avg,lat_stdev,lat_max,req_avg,req_stdev,req_max,tot_requests,tot_duration,read,err_connect,err_read,err_write,err_timeout,req_sec_tot,read_tot,user_cpu,kern_cpu,mem_kb_uss,mem_kb_pss,mem_kb_rss,duration\n')
+
+
+def exec_all_tests():
+    logger.info('Estimated duration: ' + str(estimate_duration()) + ' hours')
+    logger.info('Using logfile: ' + resultsfile)
     for jarfile in jarfiles:
         for jvm in jvms:
             for jvmswitch in jvm.get('switchobj'):
@@ -387,14 +393,18 @@ def kill_process(pid):
 
 
 def main():
+    write_header()
     if (not check_prereqs()):
         logger.error('Prerequisites not satisfied. Exiting')
         exit(1)
     else:
         logger.info('Prerequisites satisfied')
-    print(exec_all_tests())
+    for repeat in repeats:
+        logger.info('Starting repeat: '+str(repeat))
+        print(exec_all_tests())
     logger.info('Test execution finished')
 
 
 if __name__ == '__main__':
     main()
+
