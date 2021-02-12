@@ -48,8 +48,8 @@ jarfiles = [{'filename': '/home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdb
             {'filename': '/home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_197-0.0.1-SNAPSHOT-17.jar', 'description': 'sb_jdbc_197'}]
 
 #JVMs / switches to test with
-jvms = [{'cmd': '/usr/lib/jvm/jdk-17-loom/bin/java', 'description': '17-loom', 'switchobj': [{'switch': '-Xmx100m -Xms100m -Doracle.net.disableOob=true -jar', 'mem': '100Mb'}]},
-        {'cmd': '/usr/lib/jvm/jdk-17/bin/java', 'description': '17', 'switchobj': [{'switch': '-Xmx100m -Xms100m -Doracle.net.disableOob=true -jar', 'mem': '100Mb'}]}]
+jvms = [{'cmd': '/usr/lib/jvm/jdk-17-loom/bin/java', 'description': '17-loom', 'switchobj': [{'switch': '-DvirtualThreads=true -Xmx500m -Xms500m -Doracle.net.disableOob=true -jar', 'mem': '500Mb'}]},
+        {'cmd': '/usr/lib/jvm/jdk-17/bin/java', 'description': '17', 'switchobj': [{'switch': '-Xmx500m -Xms500m -Doracle.net.disableOob=true -jar', 'mem': '500Mb'}]}]
 
 def check_prereqs():
     resval = True;
@@ -407,4 +407,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
