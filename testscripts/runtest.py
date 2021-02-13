@@ -173,6 +173,7 @@ def exec_all_tests():
                                     wrk_output = parse_wrk_output(output_test)
                                     logger.debug("wrk_output: " + str(wrk_output))
                                     if str(wrk_output.get('read_tot')) == '0.0':
+                                        logger.warning('No bytes read. Test failed')
                                         raise Exception('No bytes read. Test failed')
                                     cpu_and_mem = ',' + str(
                                         int(int(cpu_user_after) - int(cpu_user_before))) + ',' + str(
@@ -183,6 +184,7 @@ def exec_all_tests():
                                     kill_process(pid)
                                     test_done = True
                                 except:
+                                    logger.info('Executing retry: '+str(test_retry))
                                     kill_process(pid)
                                     test_retry = test_retry + 1
                             outputline = outputline + ',' + str(test_duration)
