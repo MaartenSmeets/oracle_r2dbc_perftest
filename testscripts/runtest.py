@@ -187,6 +187,8 @@ def exec_all_tests():
                                     logger.info('Executing retry: '+str(test_retry))
                                     kill_process(pid)
                                     test_retry = test_retry + 1
+                            if (not test_done):
+                                outputline = jvm_outputline + wrk_data_failed()
                             outputline = outputline + ',' + str(test_duration)
                             with open(resultsfile, 'a') as the_file:
                                 the_file.write(outputline + '\n')
