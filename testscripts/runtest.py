@@ -7,12 +7,12 @@ import subprocess
 import time
 from datetime import datetime
 
-repeats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+repeats = [1, 2, 3, 4, 5]
 jvm_start_retries = 3
 test_retries = 3
 
 test_duration = 60
-primer_duration = 5
+primer_duration = 2
 wait_after_primer = 2
 wait_to_start = 20 # longer due to agent
 wait_after_kill = 5
@@ -44,7 +44,7 @@ logger.addHandler(fh)
 
 cpuset_load_list = ['3,5,7,9']
 cpuset_service_list = ['2,4,6,8']
-concurrency_conf = ['100']
+concurrency_conf = ['4', '100']
 
 # JAR files to test with
 jarfiles = [{'filename': '/home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdbc_211-0.0.1-SNAPSHOT-17.jar', 'description': 'sb_jdbc_211'},
@@ -163,6 +163,11 @@ def exec_all_tests():
                                 try:
                                     output_primer = execute_test_single(cpuset_load, cpunum_load, concurrency,
                                                                         primer_duration)
+                                    wrk_output = parse_wrk_output(output_primer )
+                                    logger.debug("wrk_output primer: " + str(wrk_output))
+                                    if str(wrk_output.get('read_tot')) == '0.0':
+                                        logger.warning('No bytes read. Primer failed')
+                                        raise Exception('No bytes read. Primer failed')
                                     time.sleep(wait_after_primer)
                                     cpu_user_before = get_user_cpuusage(pid)
                                     cpu_kern_before = get_kern_cpuusage(pid)
