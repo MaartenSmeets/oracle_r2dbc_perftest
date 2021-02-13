@@ -17,7 +17,7 @@ import java.security.ProtectionDomain;
 public class RemsyncTransformer implements ClassFileTransformer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RemsyncTransformer.class);
-    private ScopedClassPoolFactoryImpl scopedClassPoolFactory = new ScopedClassPoolFactoryImpl();
+    private final ScopedClassPoolFactoryImpl scopedClassPoolFactory = new ScopedClassPoolFactoryImpl();
 
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
@@ -35,32 +35,34 @@ public class RemsyncTransformer implements ClassFileTransformer {
             for (CtMethod method : methods) {
                 modifier = method.getModifiers();
                 if (Modifier.isSynchronized(modifier)) {
-                    LOGGER.info("Method is synchronized: " + method.getName());
-
-                    //https://paluch.biz/blog/183-carrier-kernel-thread-pinning-of-virtual-threads-project-loom.html
-                    try {
-                        ctField = ctClass.getDeclaredField("lockCustomAgent");
-                    } catch (NotFoundException e) {
-                        ctClass.addField(CtField.make("final java.util.concurrent.locks.Lock lockCustomAgent = new java.util.concurrent.locks.ReentrantLock();",ctClass));
-                    }
-
-                    //https://stackoverflow.com/questions/41156596/using-javassist-to-insert-try-finally-logic-that-wraps-the-original-method-logic
-                    method.instrument(new ExprEditor(){
-                        public void edit(MethodCall m) throws CannotCompileException {
-                            m.replace("{ lockCustomAgent.lock(); " +
-                                    "try { $_ = $proceed($$); } " +
-                                    "finally { lockCustomAgent.unlock(); } " +
-                                    "}");
+                    LOGGER.info("[Agent] Method is synchronized: " + method.getName());
+                    if (Modifier.isStatic(modifier)) {
+                        //https://paluch.biz/blog/183-carrier-kernel-thread-pinning-of-virtual-threads-project-loom.html
+                        try {
+                            ctField = ctClass.getDeclaredField("lockCustomAgentStatic");
+                        } catch (NotFoundException e) {
+                            ctClass.addField(CtField.make("final static java.util.concurrent.locks.Lock lockCustomAgentStatic = new java.util.concurrent.locks.ReentrantLock();", ctClass));
                         }
-                    });
 
+                        //https://stackoverflow.com/questions/41156596/using-javassist-to-insert-try-finally-logic-that-wraps-the-original-method-logic
+                        method.instrument(new ExprEditor() {
+                            public void edit(MethodCall m) throws CannotCompileException {
+                                m.replace("{ lockCustomAgentStatic.lock(); try { $_ = $proceed($$); } finally { lockCustomAgentStatic.unlock(); } }");
+                            }
+                        });
+                    } else {
+                        try {
+                            ctField = ctClass.getDeclaredField("lockCustomAgent");
+                        } catch (NotFoundException e) {
+                            ctClass.addField(CtField.make("final java.util.concurrent.locks.Lock lockCustomAgent = new java.util.concurrent.locks.ReentrantLock();", ctClass));
+                        }
 
-                    method.insertBefore("lockCustomAgent.lock();\n" +
-                            "        try {");
-                    method.insertAfter("        } finally {\n" +
-                            "            lockCustomAgent.unlock();\n" +
-                            "        }");
-
+                        method.instrument(new ExprEditor() {
+                            public void edit(MethodCall m) throws CannotCompileException {
+                                m.replace("{ lockCustomAgent.lock(); try { $_ = $proceed($$); } finally { lockCustomAgent.unlock(); } }");
+                            }
+                        });
+                    }
                     modifier = Modifier.clear(modifier, Modifier.SYNCHRONIZED);
                     method.setModifiers(modifier);
                 }
@@ -69,7 +71,7 @@ public class RemsyncTransformer implements ClassFileTransformer {
             byteCode = ctClass.toBytecode();
             ctClass.detach();
         } catch (CannotCompileException | IOException e) {
-            LOGGER.error("Exception", e);
+            LOGGER.info("[Agent] Failed to transform: "+className);
         }
         return byteCode;
     }
