@@ -7,12 +7,15 @@ import subprocess
 import time
 from datetime import datetime
 
-repeats = [1, 2, 3, 4, 5]
-test_duration = 120
-primer_duration = 2
-wait_after_primer = 1
-wait_to_start = 10
-wait_after_kill = 2
+repeats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+jvm_start_retries = 3
+test_retries = 3
+
+test_duration = 60
+primer_duration = 5
+wait_after_primer = 2
+wait_to_start = 20 # longer due to agent
+wait_after_kill = 5
 now = datetime.now()
 wrkcmd = '/home/maarten/wrk/wrk'
 wrktimeout = '20s'
@@ -49,6 +52,7 @@ jarfiles = [{'filename': '/home/maarten/oracle_r2dbc_perftest/testscripts/sb_jdb
 
 #JVMs / switches to test with
 jvms = [{'cmd': '/usr/lib/jvm/jdk-17-loom/bin/java', 'description': '17-loom', 'switchobj': [{'switch': '-DvirtualThreads=true -Xmx500m -Xms500m -Doracle.net.disableOob=true -jar', 'mem': '500Mb'}]},
+        {'cmd': '/usr/lib/jvm/jdk-17-loom/bin/java', 'description': '17-loom-agent', 'switchobj': [{'switch': '-javaagent:/home/maarten/oracle_r2dbc_perftest/testapps/agent_remsync/target/agent_remsync-1-jar-with-dependencies.jar -DvirtualThreads=true -Xmx500m -Xms500m -Doracle.net.disableOob=true -jar', 'mem': '500Mb'}]},
         {'cmd': '/usr/lib/jvm/jdk-17/bin/java', 'description': '17', 'switchobj': [{'switch': '-Xmx500m -Xms500m -Doracle.net.disableOob=true -jar', 'mem': '500Mb'}]}]
 
 def check_prereqs():
@@ -151,60 +155,39 @@ def exec_all_tests():
                         for concurrency in concurrency_local:
                             jvm_outputline = jarfile.get('description') + ',' + jvm.get('description') + ',' + jvmswitch.get('mem') + ',' + cpunum_load + ',' + cpunum_service + ',' + concurrency
                             logger.info('Number of concurrent requests ' + concurrency)
-
-                            pid = start_java_process(jvmcmd, cpuset_service)
-                            logger.info('Java process PID is: ' + pid)
-                            if (len(str(pid)) == 0):
+                            test_done = False
+                            test_retry = 0
+                            while (not test_done) and (test_retry < test_retries):
                                 pid = start_java_process(jvmcmd, cpuset_service)
-                                logger.warning('Retry startup. Java process PID is: ' + pid)
-                                if (len(str(pid)) == 0):
-                                    pid = start_java_process(jvmcmd, cpuset_service)
-                                    logger.warning('Second retry startup. Java process PID is: ' + pid)
-                            if (len(str(pid)) == 0 and len(str(get_java_process_pid())) > 0):
-                                pid = get_java_process_pid()
-                                logger.info('Setting new PID to ' + pid)
-                            try:
-                                output_primer = execute_test_single(cpuset_load, cpunum_load, concurrency, primer_duration)
-                                time.sleep(wait_after_primer)
-                                cpu_user_before=get_user_cpuusage(pid)
-                                cpu_kern_before=get_kern_cpuusage(pid)
-                                output_test = execute_test_single(cpuset_load, cpunum_load, concurrency, test_duration)
-                                cpu_user_after=get_user_cpuusage(pid)
-                                cpu_kern_after=get_kern_cpuusage(pid)
-                                wrk_output = parse_wrk_output(output_test)
-                                logger.debug("wrk_output: " + str(wrk_output))
-                                if str(wrk_output.get('read_tot')) == '0.0':
-                                    raise Exception('No bytes read. Test failed')
-                                cpu_and_mem = ',' + str(int(int(cpu_user_after)-int(cpu_user_before))) + ',' + str(int(int(cpu_kern_after)-int(cpu_kern_before))) + get_mem_kb_uss(pid) + get_mem_kb_pss(pid) + get_mem_kb_rss(pid)
-                                logger.info('CPU and memory: ' + cpu_and_mem)
-                                outputline = jvm_outputline + wrk_data(wrk_output) + cpu_and_mem
-                            except:
-                                # Retry
-                                logger.warning('Executing retry')
-                                time.sleep(wait_to_start)
+                                logger.info('Java process PID is: ' + pid)
                                 try:
-                                    output_primer = execute_test_single(cpuset_load, cpunum_load, concurrency, primer_duration)
+                                    output_primer = execute_test_single(cpuset_load, cpunum_load, concurrency,
+                                                                        primer_duration)
                                     time.sleep(wait_after_primer)
-                                    cpu_user_before=get_user_cpuusage(pid)
-                                    cpu_kern_before=get_kern_cpuusage(pid)
-                                    output_test = execute_test_single(cpuset_load, cpunum_load, concurrency, test_duration)
-                                    cpu_user_after=get_user_cpuusage(pid)
-                                    cpu_kern_after=get_kern_cpuusage(pid)
+                                    cpu_user_before = get_user_cpuusage(pid)
+                                    cpu_kern_before = get_kern_cpuusage(pid)
+                                    output_test = execute_test_single(cpuset_load, cpunum_load, concurrency,
+                                                                      test_duration)
+                                    cpu_user_after = get_user_cpuusage(pid)
+                                    cpu_kern_after = get_kern_cpuusage(pid)
                                     wrk_output = parse_wrk_output(output_test)
                                     logger.debug("wrk_output: " + str(wrk_output))
                                     if str(wrk_output.get('read_tot')) == '0.0':
                                         raise Exception('No bytes read. Test failed')
-                                    cpu_and_mem =  ',' + str(int(int(cpu_user_after)-int(cpu_user_before))) + ',' + str(int(int(cpu_kern_after)-int(cpu_kern_before))) + get_mem_kb_uss(pid) + get_mem_kb_pss(pid) + get_mem_kb_rss(pid)
+                                    cpu_and_mem = ',' + str(
+                                        int(int(cpu_user_after) - int(cpu_user_before))) + ',' + str(
+                                        int(int(cpu_kern_after) - int(cpu_kern_before))) + get_mem_kb_uss(
+                                        pid) + get_mem_kb_pss(pid) + get_mem_kb_rss(pid)
                                     logger.info('CPU and memory: ' + cpu_and_mem)
                                     outputline = jvm_outputline + wrk_data(wrk_output) + cpu_and_mem
-                                except Exception as inst:
-                                    logger.warning("Giving up. Test failed. Writing FAILED to results file")
-                                    logger.error("Error: " + str(inst))
-                                    outputline = jvm_outputline + wrk_data_failed()
+                                    kill_process(pid)
+                                    test_done = True
+                                except:
+                                    kill_process(pid)
+                                    test_retry = test_retry + 1
                             outputline = outputline + ',' + str(test_duration)
                             with open(resultsfile, 'a') as the_file:
                                 the_file.write(outputline + '\n')
-                            kill_process(pid)
     return
 
 
@@ -353,16 +336,20 @@ def get_java_process_pid():
     return output
 
 
-def start_java_process(java_cmd, cpuset):
+def start_java_process(java_cmd, cpuset, retry=0):
     oldpid = get_java_process_pid()
     if (oldpid.isdecimal()):
         logger.info('Old Java process found with PID: ' + oldpid + '. Killing it')
         kill_process(oldpid)
     cmd = 'taskset -c ' + cpuset + ' ' + java_cmd
     subprocess.Popen(cmd.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
     time.sleep(wait_to_start)
-    return get_java_process_pid()
+    newpid=get_java_process_pid()
+    if (len(str(newpid)) == 0 and retry<jvm_start_retries):
+        logger.info('Java process start retry: '+str(retry))
+        retry=retry+1
+        newpid = start_java_process(java_cmd, cpuset, retry)
+    return newpid
 
 
 def execute_test_single(cpuset, threads, concurrency, duration):
